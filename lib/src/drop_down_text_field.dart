@@ -31,6 +31,7 @@ class DropDownTextField extends StatefulWidget {
   final TextAlignVertical? textAlignVertical;
   final int? maxLines;
   final int? minLines;
+  final String? Function(String?)? validator;
 
   /// [isSearchVisible] flag use to manage the search widget visibility
   /// by default it is [True] so widget will be visible.
@@ -44,6 +45,7 @@ class DropDownTextField extends StatefulWidget {
     this.selectedOptions,
     this.onChanged,
     this.multiple = false,
+    this.validator,
     Key? key,
 
     /// optional parameters
@@ -123,6 +125,7 @@ class _DropDownTextFieldState extends State<DropDownTextField> {
             FocusScope.of(context).unfocus();
             onTextFieldTap();
           },
+          validator: widget.validator,
           // Optional
           decoration: widget.decoration ??
               InputDecoration(
